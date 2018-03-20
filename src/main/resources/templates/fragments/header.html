@@ -4,57 +4,47 @@
     ...
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top navbar-expand-lg" th:fragment="header">
-    <!--<div class="container">-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
-            aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand"
-       href="/">
-        Garai
-    </a>
-    <div class="collapse navbar-collapse" id="navbarToggler">
+<nav class="navbar navbar-dark bg-primary navbar-static-top navbar-expand-lg" th:fragment="header">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand"
+           href="/">
+            Garai
+        </a>
+        <div class="collapse navbar-collapse" id="navbarToggler">
 
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-            <li class="nav-item" sec:authorize="isFullyAuthenticated()">
-                <form  th:action="@{/logout}" method="get">
-                    <button class="btn btn-md btn-danger navbar-btn" name="registration"
-                            type="Submit">Logout
-                    </button>
-                </form>
-            </li>
-            <li class="nav-item" sec:authorize="!isFullyAuthenticated()">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" sec:authorize="isFullyAuthenticated()">
+                    <form th:action="@{/logout}" method="get">
+                        <button class="btn btn-md btn-danger navbar-btn" name="registration"
+                                type="Submit">Logout
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item" sec:authorize="!isFullyAuthenticated()">
                     <a class="nav-link btn btn-md navbar-btn btn-primary" href="/login">Login</a>
-            </li>
-            <li class="nav-item" sec:authorize="!isFullyAuthenticated()">
-                <a class="nav-link btn btn-outline-secondary navbar-btn" href="/register">Register</a>
-            </li>
-        </ul>
-
-        <!--<ul class="nav navbar-nav navbar-right mr-auto mt-2 mt-lg-0">-->
-            <!--<li class="nav-item"><a href="/admin/createTask">Create Task</a></li>-->
-            <!--<li class="nav-item"><a href="/admin/users">User Management</a></li>-->
-            <!--<li class="nav-item"><a th:text="${userName}" href="/profile">My Profile</a></li>-->
-            <!--<li class="nav-item">-->
-                <!--<form th:action="@{/logout}" method="get">-->
-                    <!--<button class="btn btn-md btn-danger navbar-btn" name="registration"-->
-                            <!--type="Submit">Logout-->
-                    <!--</button>-->
-                <!--</form>-->
-            <!--</li>-->
-        <!--</ul>-->
+                </li>
+                <li class="nav-item" sec:authorize="!isFullyAuthenticated()">
+                    <a class="nav-link btn btn-outline-secondary navbar-btn" href="/register">Register</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <!--</div>-->
 </nav>
 </body>
 </html>
