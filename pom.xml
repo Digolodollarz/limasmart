@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>tech.diggle.apps</groupId>
-	<artifactId>Accomodation</artifactId>
+	<artifactId>LimaSmart</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Accomodation</name>
-	<description>Off Campus Accommodation</description>
+	<name>LimaSmart</name>
+	<description>Lima Smart</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
