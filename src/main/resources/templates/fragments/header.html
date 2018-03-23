@@ -12,13 +12,22 @@
         </button>
         <a class="navbar-brand"
            href="/">
-            Garai
+            Lima Smart
         </a>
         <div class="collapse navbar-collapse" id="navbarToggler">
 
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dzimba Idzo Pazai</a>
+                    <a class="nav-link" href="/realtime">Real time</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/diseases">Diseases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/risk">Risk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Bulk SMS</a>
                 </li>
             </ul>
 
@@ -35,6 +44,9 @@
                 </li>
                 <li class="nav-item" sec:authorize="!isFullyAuthenticated()">
                     <a class="nav-link btn btn-outline-secondary navbar-btn" href="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link">About</a>
                 </li>
             </ul>
         </div>
