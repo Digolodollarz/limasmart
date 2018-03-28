@@ -120,7 +120,8 @@
 				<executions>
 					<execution>
 						<id>compile</id>
-						<phase>compile</phase>
+
+						<phase>process-sources</phase>
 						<goals>
 							<goal>compile</goal>
 						</goals>
