@@ -16,7 +16,7 @@
 
         function drawTable() {
             var jsonData = $.ajax({
-                url: "/api/disease",
+                url: "/api/disease/risk",
                 dataType: "json",
                 async: false
             }).responseText;
@@ -27,12 +27,13 @@
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'crop');
             data.addColumn('string', 'disease');
-            data.addColumn('number', 'rainfall');
-            data.addColumn('number', 'temperature');
-            data.addColumn('number', 'humidity');
-            data.addColumn('number', 'radiation');
-            data.addColumn('number', 'moisture');
-            data.addColumn('number', 'windspeed');
+            data.addColumn('number', 'risk');
+            // data.addColumn('number', 'rainfall');
+            // data.addColumn('number', 'temperature');
+            // data.addColumn('number', 'humidity');
+            // data.addColumn('number', 'radiation');
+            // data.addColumn('number', 'moisture');
+            // data.addColumn('number', 'windspeed');
             data.addColumn('string', 'symptom');
             data.addColumn('string', 'chemical');
             data.addColumn('number', 'price');
@@ -41,8 +42,14 @@
             console.log(jsonData);
             for (var i = 0; i < jsonData.length; i++) {
                 var deta = jsonData[i];
-                var row = [deta.crop, deta.disease, deta.rainfall, deta.temperature, deta.humidity, deta.radiation,
-                    deta.moisture, deta.windspeed, deta.symptom, deta.chemical, deta.price];
+                var row = [deta.crop,
+                    deta.disease,
+                    deta.risk,
+                    // deta.rainfall, deta.temperature, deta.humidity, deta.radiation,
+                    // deta.moisture, deta.windspeed,
+                    deta.symptom,
+                    deta.chemical,
+                    deta.price];
                 console.log('deta', deta, row);
                 data.addRow(row)
             }

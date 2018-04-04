@@ -18,7 +18,7 @@ class Disease {
     var humidity: Int? = null
     var windspeed: Int? = null
 
-    //    Sir Munde named the database imporperly
+    //    Sir Munde named the database improperly
     @Column(name = "sympton")
     var symptom: String? = null
     var chemical: String? = null

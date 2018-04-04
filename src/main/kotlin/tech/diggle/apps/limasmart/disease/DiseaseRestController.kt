@@ -9,4 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class DiseaseRestController(val service: DiseaseService) {
     @GetMapping
     fun getAll() = service.getAll()
+
+    @GetMapping("risk")
+    fun getRisk() = service.getRisk()
 }

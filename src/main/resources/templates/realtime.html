@@ -60,8 +60,8 @@
                     for (var i = 0; i < jsonData.length; i++) {
                         var deta = jsonData[i];
                         var detI = new Date(deta.createdAt);
-                        var startDate = new Date(1521914804208);
-                        var endDate = new Date(1521915925830);
+                        var startDate = new Date(1522713600);
+                        var endDate = new Date();
                         if (startDate <= deta.createdAt && endDate >= deta.createdAt) {
                             var row = [detI, deta.temp, deta.humidity / 3, deta.radiation / 1000, deta.rain, deta.moisture, deta.wind, deta.ph];
                             console.log('deta', deta, row);
