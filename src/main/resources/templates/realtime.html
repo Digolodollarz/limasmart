@@ -63,7 +63,7 @@
                         // var startDate = new Date(1522713600);
                         // var endDate = new Date();
                         // if (startDate <= deta.createdAt && endDate >= deta.createdAt) {
-                        var row = [deta.createdAt, deta.temp, deta.humidity / 3, deta.radiation / 1000, deta.rain, deta.moisture, deta.wind, deta.ph];
+                        var row = [new Date(deta.createdAt), deta.temp, deta.humidity / 3, deta.radiation / 1000, deta.rain, deta.moisture, deta.wind, deta.ph];
                         console.log('deta', deta, row);
                         data.addRow(row)
                         // } else console.log('date', detI.getDate())
