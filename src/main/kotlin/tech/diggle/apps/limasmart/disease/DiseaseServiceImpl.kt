@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 import tech.diggle.apps.limasmart.realtime.Data
 import tech.diggle.apps.limasmart.realtime.Realtime
+import tech.diggle.apps.limasmart.risk.Risk
 import java.net.URI
 import java.util.ArrayList
 
@@ -58,5 +59,39 @@ class DiseaseServiceImpl(val repository: DiseaseRepository) : DiseaseService {
         }
 
         return diseaseRisks
+    }
+
+    override fun getCropRisk(): List<Risk> {
+        val diseaseRisks = this.getRisk()
+        val risks: MutableList<Risk> = mutableListOf()
+
+        for (diseaseRisk in diseaseRisks) {
+            var risk = risks.find { it -> it.crop?.trim() == diseaseRisk.crop?.trim() }
+            if (risk != null) {
+                val index = risks.indexOf(risk)
+                risk.risk = diseaseRisk.risk!! + risk.risk!!
+                risk.diseaseCount++
+                if (diseaseRisk.risk!! > 0.1f) {
+                    risk.diseases = diseaseRisk.disease
+                } else risk.diseases = ""
+                risks[index] = risk
+            } else {
+                risk = Risk()
+                risk.crop = diseaseRisk.crop
+                risk.risk = diseaseRisk.risk
+                risk.diseaseCount = 1
+                if (diseaseRisk.risk!! > 0.1f)
+                    risk.diseases = if (risk.diseases.isNullOrBlank())
+                        diseaseRisk.disease
+                    else risk.diseases + ", " + diseaseRisk.disease
+                risks.add(risk)
+            }
+        }
+        return risks.map { risk -> average(risk) }
+    }
+
+    fun average(risk: Risk): Risk {
+        risk.risk = risk.risk!! / risk.diseaseCount
+        return risk
     }
 }

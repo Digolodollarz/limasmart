@@ -12,4 +12,7 @@ class DiseaseRestController(val service: DiseaseService) {
 
     @GetMapping("risk")
     fun getRisk() = service.getRisk()
+
+    @GetMapping("risks")
+    fun getRisks() = service.getCropRisk()
 }
