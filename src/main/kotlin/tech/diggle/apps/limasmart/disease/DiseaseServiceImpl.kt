@@ -71,9 +71,10 @@ class DiseaseServiceImpl(val repository: DiseaseRepository) : DiseaseService {
                 val index = risks.indexOf(risk)
                 risk.risk = diseaseRisk.risk!! + risk.risk!!
                 risk.diseaseCount++
-                if (diseaseRisk.risk!! > 0.1f) {
-                    risk.diseases = diseaseRisk.disease
-                } else risk.diseases = ""
+                if (diseaseRisk.risk!! > 0.1f)
+                    risk.diseases = if (risk.diseases.isNullOrBlank())
+                        diseaseRisk.disease
+                    else risk.diseases + ", " + diseaseRisk.disease
                 risks[index] = risk
             } else {
                 risk = Risk()

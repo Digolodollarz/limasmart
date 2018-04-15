@@ -5593,8 +5593,8 @@ fieldset:disabled a.btn {
   display: block;
   width: 100%; }
   .form-control[type='file'],
-  [type='file'].form-control-file,
-  [type='file'].custom-select {
+  .form-control-file[type='file'],
+  .custom-select[type='file'] {
     height: auto;
     max-height: 2.25rem;
     min-height: 2.25rem; }
@@ -5616,23 +5616,23 @@ fieldset:disabled a.btn {
   .form-control:disabled, .form-control[readonly],
   .form-control-file:disabled,
   .custom-select:disabled,
-  [readonly].form-control-file,
-  [readonly].custom-select {
+  .form-control-file[readonly],
+  .custom-select[readonly] {
     border-style: dotted;
     color: rgba(0, 0, 0, 0.38);
     opacity: 1; }
     .form-control:disabled:hover, .form-control[readonly]:hover,
     .form-control-file:disabled:hover,
     .custom-select:disabled:hover,
-    [readonly].form-control-file:hover,
-    [readonly].custom-select:hover {
+    .form-control-file[readonly]:hover,
+    .custom-select[readonly]:hover {
       border-color: rgba(0, 0, 0, 0.42);
       box-shadow: none; }
     .form-control:disabled:focus, .form-control[readonly]:focus,
     .form-control-file:disabled:focus,
     .custom-select:disabled:focus,
-    [readonly].form-control-file:focus,
-    [readonly].custom-select:focus {
+    .form-control-file[readonly]:focus,
+    .custom-select[readonly]:focus {
       border-color: rgba(0, 0, 0, 0.42);
       box-shadow: none; }
   .form-control:focus,
@@ -5703,9 +5703,9 @@ fieldset:disabled a.btn {
   line-height: 1.17647;
   padding: 0.625rem 0 0.5625rem; }
   .form-control-lg[type='file'],
-  [type='file'].custom-select-lg,
-  .floating-label-lg [type='file'].form-control,
-  .input-group-lg > [type='file'].form-control {
+  .custom-select-lg[type='file'],
+  .floating-label-lg .form-control[type='file'],
+  .input-group-lg > .form-control[type='file'] {
     height: auto;
     max-height: 3.75rem;
     min-height: 3.75rem; }
@@ -5719,9 +5719,9 @@ fieldset:disabled a.btn {
   line-height: 1.38461;
   padding: 0.4375rem 0 0.375rem; }
   .form-control-sm[type='file'],
-  [type='file'].custom-select-sm,
-  .floating-label-sm [type='file'].form-control,
-  .input-group-sm > [type='file'].form-control {
+  .custom-select-sm[type='file'],
+  .floating-label-sm .form-control[type='file'],
+  .input-group-sm > .form-control[type='file'] {
     height: auto;
     max-height: 2rem;
     min-height: 2rem; }
@@ -5776,13 +5776,13 @@ select.form-control[multiple], select.form-control[size], textarea.form-control:
   border-width: 1px;
   height: auto;
   padding: 1.03571rem 1rem; }
-  select.form-control[multiple]:hover, select.form-control[size]:hover, textarea.form-control:hover:not(.textarea-autosize), .custom-select[multiple]:hover, .custom-select[size]:hover {
+  select.form-control:hover[multiple], select.form-control:hover[size], textarea.form-control:hover:not(.textarea-autosize), .custom-select:hover[multiple], .custom-select:hover[size] {
     box-shadow: inset 2px 2px 0 -1px rgba(0, 0, 0, 0.87), inset -2px -2px 0 -1px rgba(0, 0, 0, 0.87); }
   select.form-control-lg.form-control[multiple], select.form-control-lg.form-control[size], textarea.form-control-lg.form-control:not(.textarea-autosize), .form-control-lg.custom-select[multiple], .form-control-lg.custom-select[size] {
     padding: 0.875rem 1rem; }
   select.form-control-sm.form-control[multiple], select.form-control-sm.form-control[size], textarea.form-control-sm.form-control:not(.textarea-autosize), .form-control-sm.custom-select[multiple], .form-control-sm.custom-select[size] {
     padding: 0.8125rem 0.75rem; }
-  select.form-control[multiple]:focus, select.form-control[size]:focus, textarea.form-control:focus:not(.textarea-autosize), .custom-select[multiple]:focus, .custom-select[size]:focus {
+  select.form-control:focus[multiple], select.form-control:focus[size], textarea.form-control:focus:not(.textarea-autosize), .custom-select:focus[multiple], .custom-select:focus[size] {
     box-shadow: inset 2px 2px 0 -1px #2e7d32, inset -2px -2px 0 -1px #2e7d32; }
 
 .form-control-plaintext {
@@ -9077,3 +9077,10 @@ main {
 @media (min-width: var(--breakpoint-lg)) {
   .card-columns {
     column-count: 3; } }
+
+@media (min-width: 992px) {
+  .content {
+    margin-left: 18.5rem; } }
+
+.text-large {
+  font-size: large; }
