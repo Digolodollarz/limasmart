@@ -9080,7 +9080,17 @@ main {
 
 @media (min-width: 992px) {
   .content {
-    margin-left: 18.5rem; } }
+    margin-left: 18.5rem;
+    margin-right: 1rem; } }
 
 .text-large {
   font-size: large; }
+
+footer {
+  z-index: 39; }
+
+h1.page-header {
+  background-color: #0000006b;
+  color: white;
+  margin: 0;
+  padding: 0.5rem; }

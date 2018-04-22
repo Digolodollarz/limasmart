@@ -2,17 +2,17 @@ package tech.diggle.apps.limasmart.user
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import tech.diggle.apps.limasmart.role.RoleRepository
+import java.security.Principal
 
 
 @Service("userService")
-class UserServiceImpl : UserService {
-
-    @Qualifier("userRepository")
-    @Autowired
-    private val userRepository: UserRepository? = null
+class UserServiceImpl(@Qualifier("userRepository")
+                      @Autowired
+                      val userRepository: UserRepository) : UserService {
     @Qualifier("roleRepository")
     @Autowired
     private val roleRepository: RoleRepository? = null
@@ -41,5 +41,4 @@ class UserServiceImpl : UserService {
     fun addRole(roleName: String) {
 
     }
-
 }

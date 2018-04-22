@@ -30,6 +30,30 @@
                     <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
                            class="validation-message"></small>
                 </div>
+
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input id="company" type="text" th:field="*{company}"
+                           placeholder="Company" class="form-control"/>
+                    <small th:if="${#fields.hasErrors('company')}" th:errors="*{company}"
+                           class="validation-message"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input id="location" type="text" th:field="*{location}"
+                           placeholder="Location" class="form-control"/>
+                    <small th:if="${#fields.hasErrors('location')}" th:errors="*{location}"
+                           class="validation-message"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="position">Position</label>
+                    <input id="position" type="text" th:field="*{position}"
+                           placeholder="Position" class="form-control"/>
+                    <small th:if="${#fields.hasErrors('position')}" th:errors="*{position}"
+                           class="validation-message"></small>
+                </div>
                 <div class="form-group">
                     <label for="email">Email address</label>
                     <input id="email" type="text" th:field="*{email}" placeholder="Email"
