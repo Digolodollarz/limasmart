@@ -5,7 +5,9 @@ import org.springframework.web.client.RestTemplate
 import tech.diggle.apps.limasmart.realtime.Data
 import tech.diggle.apps.limasmart.realtime.Realtime
 import tech.diggle.apps.limasmart.risk.Risk
+import java.math.BigDecimal
 import java.net.URI
+import java.text.DecimalFormat
 import java.util.ArrayList
 
 @Service
@@ -48,9 +50,8 @@ class DiseaseServiceImpl(val repository: DiseaseRepository) : DiseaseService {
                 if (Math.abs(dat.windspeed!! - deta.wind!!) < 5)
                     ri += 0.15f
 
-                ri = if (ri <= 90) ri else 90f
-
-                risk.risk = ri
+                ri = if (ri <= 0.90) ri else 0.90f
+                risk.risk = ri.roundTo2DecimalPlaces()
                 diseaseRisks.add(risk)
             }
 
@@ -70,6 +71,7 @@ class DiseaseServiceImpl(val repository: DiseaseRepository) : DiseaseService {
             if (risk != null) {
                 val index = risks.indexOf(risk)
                 risk.risk = diseaseRisk.risk!! + risk.risk!!
+                risk.risk = risk.risk!!.roundTo2DecimalPlaces()
                 risk.diseaseCount++
                 if (diseaseRisk.risk!! > 0.1f)
                     risk.diseases = if (risk.diseases.isNullOrBlank())
@@ -79,7 +81,7 @@ class DiseaseServiceImpl(val repository: DiseaseRepository) : DiseaseService {
             } else {
                 risk = Risk()
                 risk.crop = diseaseRisk.crop
-                risk.risk = diseaseRisk.risk
+                risk.risk = diseaseRisk.risk!!.roundTo2DecimalPlaces()
                 risk.diseaseCount = 1
                 if (diseaseRisk.risk!! > 0.1f)
                     risk.diseases = if (risk.diseases.isNullOrBlank())
@@ -95,4 +97,7 @@ class DiseaseServiceImpl(val repository: DiseaseRepository) : DiseaseService {
         risk.risk = risk.risk!! / risk.diseaseCount
         return risk
     }
+
+    fun Float.roundTo2DecimalPlaces() =
+            BigDecimal(this.toDouble()).setScale(2, BigDecimal.ROUND_HALF_UP).toFloat()
 }
