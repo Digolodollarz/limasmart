@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate
 import java.net.URI
 
 @RestController
-@RequestMapping("api/realtime")
+//@RequestMapping("api/realtime")
 class RealtimeApiController {
     @GetMapping
     fun index(): Data? {
