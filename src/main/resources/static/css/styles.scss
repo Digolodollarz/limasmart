@@ -1,12 +1,12 @@
 $primary: (
         color: #2e7d32,
-        dark:  #005005,
+        dark: #005005,
         light: #60ad5e
 );
 
 $secondary: (
         color: #ffff00,
-        dark:  #c7cc00,
+        dark: #c7cc00,
         light: #ffff5a
 );
 
@@ -117,3 +117,26 @@ main {
     column-count: 3;
   }
 }
+
+@include media-breakpoint-up(lg) {
+  .content {
+    margin-left: $navdrawer-width + 1rem;
+    margin-right: 1rem;
+  }
+}
+
+.text-large {
+  font-size: large;
+}
+
+footer {
+  z-index: 39;
+}
+
+h1.page-header{
+  background-color: #0000006b;
+  color: white;
+  margin: 0;
+  padding: 0.5rem;
+}
+

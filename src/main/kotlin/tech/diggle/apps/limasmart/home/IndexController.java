@@ -15,20 +15,24 @@ public class IndexController {
     @Autowired
     private UserService userService;
 
-	@RequestMapping("/")
-	public ModelAndView Home(){
-		ModelAndView index = new ModelAndView("index");
-		return index;
-	}
+    @RequestMapping("/")
+    public ModelAndView Home() {
+        ModelAndView index = new ModelAndView("index");
 
-	@RequestMapping(value="/admin/home", method = RequestMethod.GET)
-	public ModelAndView home(){
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-		modelAndView.setViewName("admin/home");
-		return modelAndView;
-	}
+        User user = userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        index.addObject("user", user);
+        return index;
+    }
+
+    @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
+    public ModelAndView home() {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+        modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName("admin/home");
+        return modelAndView;
+    }
 }

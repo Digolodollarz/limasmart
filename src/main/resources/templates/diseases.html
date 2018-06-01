@@ -6,8 +6,14 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header">...</div>
-<main class="container content">
-    <h1>Diseases</h1>
+<div th:replace="fragments/nav :: nav"></div>
+<style>
+    body {
+        background-image: url("/images/cabbage-moth-broccoli-leaves1-400x300.jpg");
+    }
+</style>
+<main class="content">
+    <h1 class="page-header">Diseases</h1>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages': ['table']});

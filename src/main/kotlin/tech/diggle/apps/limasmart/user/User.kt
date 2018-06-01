@@ -43,25 +43,7 @@ class User {
     @JoinTable(name = "user_role", joinColumns = arrayOf(JoinColumn(name = "user_id")), inverseJoinColumns = arrayOf(JoinColumn(name = "role_id")))
     var roles: MutableSet<Role>? = null
 
-    val isAdmin: Boolean
-        get() {
-            var `is` = false
-            for (role in roles!!) {
-                if (role.role == "ADMIN")
-                    `is` = true
-            }
-            return `is`
-        }
-
-
-    val isDriver: Boolean
-        get() {
-            var `is` = false
-            for (role in roles!!) {
-                if (role.role == "DRIVER")
-                    `is` = true
-            }
-            return `is`
-        }
-
+    var company: String? = null
+    var position: String? = null
+    var location: String? = null
 }

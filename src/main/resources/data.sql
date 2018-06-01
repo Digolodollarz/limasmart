@@ -1,7 +1,6 @@
 INSERT IGNORE INTO role (role_id, role) VALUES
   (1, 'USER'),
-  (2, 'ADMIN'),
-  (3, 'DRIVER');
+  (2, 'ADMIN');
 
 INSERT IGNORE INTO `disease` (`number`, `crop`, `disease`, `rainfall`, `temperature`, `radiation`, `moisture`, `humidity`, `windspeed`, `sympton`, `chemical`, `price`)
 VALUES
